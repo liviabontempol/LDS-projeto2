@@ -1,0 +1,29 @@
+@startuml 'Sistema de Aluguel de Carros'
+left to right direction
+actor "User" as user
+actor "Client" as client
+actor "Agents" as agents
+user <|-- client
+user <|-- agents
+
+rectangle "Sistema de Aluguel de Carros"{
+usecase "Cadastrar" as cadastrar
+
+usecase "Gerir Pedidos" as gerirPedidos
+usecase "Modificar Pedidos" as modificarPedidos
+usecase "Avaliar Pedidos" as avaliarPedidos
+
+usecase "Analisar de Credito" as analisarCredito
+usecase "Conceder Credito" as concederCredito
+}
+
+client -- gerirPedidos
+
+agents -- modificarPedidos
+agents -- avaliarPedidos
+agents -- analisarCredito
+agents -- concederCredito
+
+user -- cadastrar
+
+@enduml
