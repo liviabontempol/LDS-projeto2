@@ -1,0 +1,38 @@
+@startuml
+package "Sistema de Aluguel de Carros" {
+    package "Cadastro" {
+        class User {
+            
+        }
+        class Client {
+        }
+        class Agent {
+        }
+    }
+
+    package "Gestão de Pedidos" {
+        class PedidoAluguel {
+        }
+        enum StatusPedido {
+            EM_ANALISE
+            APROVADO
+            NEGADO
+        }
+        PedidoAluguel -- StatusPedido
+        enum TipoContrato {
+            PROP_CLIENT
+            PROP_COMPANY
+            PROP_BANK
+        }
+        PedidoAluguel -- TipoContrato
+    }
+
+    package "Automóveis" {
+        class Automovel {
+            
+        }
+        PedidoAluguel "1" *-- "1..*" Automovel
+    }
+
+}
+@enduml
