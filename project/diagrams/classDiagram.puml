@@ -1,0 +1,62 @@
+@startuml
+
+class Automovel{ 
+int matricula
+int ano
+String marca
+String modelo
+String placa
+}
+
+class User{
+String nome
+String endereco
+String user
+String password
+}
+
+class Client{
+String rg
+String cpf
+String profissao
+String entidadeEmpregadora
+Double rendimento
+}
+
+class Agent{
+String cnpj
++analisarCredito(PedidoAluguel p, rendimento r)
++concederCredito(): boolean
+
+}
+
+ enum TipoContrato{
+PROP_CLIENT
+PROP_COMPANY
+PROP_BANK
+}
+
+class PedidoAluguel{
+Client cliente
+Agent agente
+Automovel automovel
+
+}
+
+enum StatusPedido{
+EM_ANALISE
+APROVADO
+NEGADO
+}
+
+User <|-- Client
+User <|-- Agent
+
+PedidoAluguel -- StatusPedido
+PedidoAluguel -- TipoContrato
+
+PedidoAluguel "1" *-- "1..*"  Automovel
+
+PedidoAluguel "1" o-- "1..*" Client
+
+@enduml
