@@ -1,9 +1,6 @@
 @startuml
 package "Sistema de Aluguel de Carros" {
-    package "Cadastro" {
-        class User {
-            
-        }
+    package "Locação" {
         class Client {
         }
         class Agent {
@@ -29,10 +26,16 @@ package "Sistema de Aluguel de Carros" {
 
     package "Automóveis" {
         class Automovel {
-            
+
         }
         PedidoAluguel "1" *-- "1..*" Automovel
     }
+    package "Autenticacao" {
+        class user{
 
+        }
+    }
 }
+
+
 @enduml
