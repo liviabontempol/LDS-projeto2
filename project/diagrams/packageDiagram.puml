@@ -1,41 +1,90 @@
 @startuml
-package "Sistema de Aluguel de Carros" {
-    package "Locação" {
-        class Client {
-        }
-        class Agent {
-        }
-    }
+ package "Sistema de Aluguel de Carros" {
 
-    package "Gestão de Pedidos" {
-        class PedidoAluguel {
-        }
-        enum StatusPedido {
-            EM_ANALISE
-            APROVADO
-            NEGADO
-        }
-        PedidoAluguel -- StatusPedido
-        enum TipoContrato {
-            PROP_CLIENT
-            PROP_COMPANY
-            PROP_BANK
-        }
-        PedidoAluguel -- TipoContrato
-    }
-
-    package "Automóveis" {
-        class Automovel {
-
-        }
-        PedidoAluguel "1" *-- "1..*" Automovel
-    }
-    package "Autenticacao" {
-        class user{
-
-        }
-    }
+package "View" {
+  package "User Interface Agents" {
+    class ViewAgents
+  }
+  package "User Interface Client" {
+    class ViewClient
+  }
 }
 
+package "Autenticacao"{
+class "User"
+}
+
+package "Controller" {
+  package "Agents" {
+    class ControllerAgents
+  }
+  package "Client" {
+    class ControllerClient
+  }
+package "Automovel" {
+    class ControllerAutomovel
+  }
+package "PedidoAluguel" {
+    class ControllerPedidoAluguel
+  }
+
+
+}
+
+package "Services" {
+  package "Agents" {
+    class ServicesAgents
+class RepositoriesAgents
+  }
+  package "Client" {
+    class ServicesClient
+    class RepositoriesClient
+  }
+package "Automovel" {
+    class ServicesAutomovel
+    class RepositoriesAutomovel
+  }
+package "PedidoAluguel" {
+    class ServicesPedidoAluguel
+    class RepositoriesPedidoAluguel
+  }
+}
+
+
+package "Databases" {
+  package " Database Agents" {
+    class ModelsAgents
+  }
+  package " Database Client" {
+    class ModelsClient
+  }
+package "Database Automovel" {
+    class ModelsAutomovel
+  }
+package "Database PedidoAluguel" {
+    class ModelsPedidoAluguel
+  }
+
+
+}
+' Associacoes
+ViewAgents ..> ControllerAgents
+ViewClient ..> ControllerClient
+
+ControllerAgents ..> ServicesAgents
+ControllerClient ..> ServicesClient
+ControllerAutomovel ..> ServicesAutomovel
+ControllerPedidoAluguel ..> ServicesPedidoAluguel
+
+ServicesAgents ..> RepositoriesAgents
+ServicesClient ..> RepositoriesClient
+ServicesAutomovel ..> RepositoriesAutomovel
+ServicesPedidoAluguel ..> RepositoriesPedidoAluguel
+
+RepositoriesAgents ..> ModelsAgents
+RepositoriesClient ..> ModelsClient
+RepositoriesAutomovel ..> ModelsAutomovel 
+RepositoriesPedidoAluguel ..> ModelsPedidoAluguel 
+}
 
 @enduml
