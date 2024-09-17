@@ -25,9 +25,12 @@ Double rendimento
 
 class Agent{
 String cnpj
+}
+
+class BankAgent{
+
 +analisarCredito(PedidoAluguel p, rendimento r)
 +concederCredito(): boolean
-
 }
 
  enum TipoContrato{
@@ -40,6 +43,10 @@ class PedidoAluguel{
 Client cliente
 Agent agente
 Automovel automovel
++criarPedido(Client cliente, Automovel automovel, Agent agente): boolean
++modificarPedido(Client cliente, Automovel automovel, Agent agente): boolean
++cancelarPedido(): boolean
++avaliarPedido(): boolean
 
 }
 
@@ -49,8 +56,11 @@ APROVADO
 NEGADO
 }
 
+
+' Associacoes
 User <|-- Client
 User <|-- Agent
+Agent <|-- BankAgent
 
 PedidoAluguel -- StatusPedido
 PedidoAluguel -- TipoContrato
