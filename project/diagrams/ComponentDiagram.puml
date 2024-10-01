@@ -12,13 +12,13 @@ package "Sistema de Aluguel de Automóveis" {
   }
 
   package "Subsistema de Construção Dinâmica de Páginas Web" {
-    [Frontend (HTML/CSS/JavaScript)]
+    [Frontend (HTML)]
     [Serviços de API Rest]
     [Banco de Dados]
   }
 
-  [Clientes] --> [Frontend (HTML/CSS/JavaScript)]
-  [Agentes (Empresas e Bancos)] --> [Frontend (HTML/CSS/JavaScript)]
+  [Clientes] --> [Frontend (HTML)]
+  [Agentes (Empresas e Bancos)] --> [Frontend (HTML)]
  
   [Backend (Java MVC)] --> [Serviços de API Rest]
   [Serviços de API Rest] --> [Banco de Dados]
