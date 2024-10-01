@@ -1,27 +1,25 @@
 @startuml
 package "Sistema de Aluguel de Automóveis" {
 
-  [Servidor Central] - [Subsistema de Gestão de Pedidos e Contratos]
-  [Servidor Central] - [Subsistema de Construção Dinâmica de Páginas Web]
-
+ 
   package "Subsistema de Gestão de Pedidos e Contratos" {
     [Gestor de Pedidos] 
     [Gestor de Contratos]
     [Avaliação Financeira] 
     [Registro de Contratos]
     [Banco de Dados]
+    [Backend (Java MVC)]
   }
 
   package "Subsistema de Construção Dinâmica de Páginas Web" {
     [Frontend (HTML/CSS/JavaScript)]
-    [Backend (Java MVC)]
     [Serviços de API Rest]
     [Banco de Dados]
   }
 
   [Clientes] --> [Frontend (HTML/CSS/JavaScript)]
   [Agentes (Empresas e Bancos)] --> [Frontend (HTML/CSS/JavaScript)]
-  [Frontend (HTML/CSS/JavaScript)] --> [Backend (Java MVC)]
+ 
   [Backend (Java MVC)] --> [Serviços de API Rest]
   [Serviços de API Rest] --> [Banco de Dados]
   [Gestor de Pedidos] --> [Registro de Contratos]
