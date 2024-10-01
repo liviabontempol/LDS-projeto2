@@ -1,0 +1,20 @@
+@startuml
+node "Servidor Central" {
+    [Banco de Dados (MySQL)]
+}
+
+node "Servidor Web" {
+    [Aplicação Back-end (Java MVC)]
+}
+
+node "Dispositivo User" {
+    [Navegador Web]
+}
+
+
+}
+
+"Dispositivo User" --> "Servidor Web": HTTP/HTTPS
+"Servidor Web" --> "Servidor Central": 3306
+"Servidor Central" --> [Banco de Dados (MySQL)]: Consultas SQL
+@enduml
